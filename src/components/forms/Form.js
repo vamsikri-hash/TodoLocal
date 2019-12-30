@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-let itemsarray = [];
+
 class Form extends Component {
   constructor(props) {
     super(props);
@@ -25,9 +25,21 @@ class Form extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    alert(this.state.title);
-    itemsarray.push(this.state);
-    localStorage.setItem("items", JSON.stringify(itemsarray));
+    if (this.state.title === "") {
+      alert("Enter the Title");
+    } else if (this.state.description === "") {
+      alert("write the description...");
+    } else if (this.state.deadline === "") {
+      alert("select dealine..");
+    } else {
+      let itemsarray = localStorage.getItem("items")
+        ? JSON.parse(localStorage.getItem("items"))
+        : [];
+      itemsarray.push(this.state);
+      localStorage.setItem("items", JSON.stringify(itemsarray));
+      this.props.update();
+      this.setState({ title: "", description: "", deadline: "" });
+    }
   }
   render() {
     return (
@@ -39,6 +51,7 @@ class Form extends Component {
               type="text"
               value={this.state.title}
               onChange={this.handleChange}
+              placeholder="enter the title"
             />
           </label>
           <label className="lead">
@@ -47,6 +60,7 @@ class Form extends Component {
               type="text"
               value={this.state.description}
               onChange={this.handleDes}
+              placeholder="write the description"
             />
           </label>
           <label>

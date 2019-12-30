@@ -1,8 +1,16 @@
 import React, { Component } from "react";
+import Showitem from "./Showitem";
 
 class Showitems extends Component {
   render() {
-    return <div>Hii</div>;
+    const Items = this.props.Items;
+    console.log(Items);
+    return (
+      <div>
+        {Items != null &&
+          Items.map((item, index) => <Showitem key={index} item={item} />)}
+      </div>
+    );
   }
 }
 export default Showitems;

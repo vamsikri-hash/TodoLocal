@@ -6,17 +6,32 @@ import Clear from "./components/forms/Clear";
 import Showitems from "./components/display/Showitems";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      Items: localStorage.getItem("items")
+        ? JSON.parse(localStorage.getItem("items"))
+        : []
+    };
+  }
+  update = () => {
+    this.setState({
+      Items: localStorage.getItem("items")
+        ? JSON.parse(localStorage.getItem("items"))
+        : []
+    });
+  };
   render() {
     return (
       <div className="App">
         <Navbar />
         <div className="side-side">
           <div className="cont1">
-            <Form />
-            <Clear />
+            <Form update={this.update} />
+            <Clear update={this.update} />
           </div>
           <div className="cont2">
-            <Showitems />
+            <Showitems Items={this.state.Items} />
           </div>
         </div>
       </div>
