@@ -1,10 +1,19 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 
-/* my Stylr */
+/* my Styles */
 .grid-style {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1rem;
+}
+.cont1 {
+  width: 50%;
+}
+.cont2 {
+  width: 50%;
+}
+.side-side {
+  display: flex;
 }
 /* Global Styles */
 :root {
