@@ -2,9 +2,28 @@ import React, { Component } from "react";
 
 class Showitem extends Component {
   render() {
-    const { title, description, date } = this.props.item;
+    //eslint-disable-next-line
+    const { title, description, deadline } = this.props.item;
+
     console.log(title);
-    return <div>{title}</div>;
+    return (
+      <div className="card">
+        <ul>
+          <li>
+            <strong>Title:</strong>
+            {title}
+          </li>
+          <li>
+            <strong>Description:</strong>
+            {description}
+          </li>
+          <li>
+            <strong>Deadline:</strong>
+            {deadline}
+          </li>
+        </ul>
+      </div>
+    );
   }
 }
 export default Showitem;

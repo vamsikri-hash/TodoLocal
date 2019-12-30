@@ -6,7 +6,7 @@ class Showitems extends Component {
     const Items = this.props.Items;
     console.log(Items);
     return (
-      <div>
+      <div className="grid-style">
         {Items != null &&
           Items.map((item, index) => <Showitem key={index} item={item} />)}
       </div>
