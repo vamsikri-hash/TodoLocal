@@ -7,6 +7,7 @@ class Clear extends Component {
   }
   handleClear() {
     localStorage.clear();
+    this.props.update();
   }
   render() {
     return (
