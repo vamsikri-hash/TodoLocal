@@ -7,13 +7,13 @@ class Clear extends Component {
   }
   handleClear() {
     localStorage.clear();
-    this.props.update();
+    this.props.Clear();
   }
   render() {
     return (
       <div>
         <button className=" btn btn-danger m-2" onClick={this.handleClear}>
-          Clear
+          CLEAR ALL
         </button>
       </div>
     );
