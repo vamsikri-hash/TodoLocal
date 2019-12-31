@@ -1,10 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 class Showitem extends Component {
-  render() {
-    //eslint-disable-next-line
-    const { title, description, deadline } = this.props.item;
+  constructor() {
+    super();
+    this.handleDelete = this.handleDelete.bind(this);
+  }
 
+  handleDelete() {}
+  render() {
+    const { title, description, deadline } = this.props.item;
     console.log(title);
     return (
       <div className="card">
@@ -18,8 +22,12 @@ class Showitem extends Component {
             {description}
           </li>
           <li>
-            <strong>Deadline:</strong>
-            {deadline}
+            {deadline && (
+              <Fragment>
+                <strong>Deadline:</strong>
+                {deadline}
+              </Fragment>
+            )}
           </li>
         </ul>
       </div>

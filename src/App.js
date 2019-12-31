@@ -11,27 +11,36 @@ class App extends Component {
     this.state = {
       Items: localStorage.getItem("items")
         ? JSON.parse(localStorage.getItem("items"))
-        : []
+        : [],
+      todo: []
     };
   }
-  update = () => {
+  add = it => {
+    let arr = this.state.todo;
+    arr.push(it);
+    this.setState({ todo: arr });
+    localStorage.setItem("items", JSON.stringify(this.state.todo));
     this.setState({
       Items: localStorage.getItem("items")
         ? JSON.parse(localStorage.getItem("items"))
         : []
     });
   };
+  Clear = () => {
+    this.setState({ Items: [], todo: [] });
+  };
+
   render() {
     return (
       <div className="App">
         <Navbar />
         <div className="side-side">
           <div className="cont1">
-            <Form update={this.update} />
-            <Clear update={this.update} />
+            <Form add={this.add} />
+            <Clear Clear={this.Clear} />
           </div>
           <div className="cont2">
-            <Showitems Items={this.state.Items} />
+            <Showitems Items={this.state.Items} delete={this.delete} />
           </div>
         </div>
       </div>
