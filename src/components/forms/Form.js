@@ -29,15 +29,14 @@ class Form extends Component {
       alert("Enter the Title");
     } else if (this.state.description === "") {
       alert("write the description...");
-    } else if (this.state.deadline === "") {
-      alert("select dealine..");
     } else {
-      let itemsarray = localStorage.getItem("items")
-        ? JSON.parse(localStorage.getItem("items"))
-        : [];
-      itemsarray.push(this.state);
-      localStorage.setItem("items", JSON.stringify(itemsarray));
-      this.props.update();
+      //  let itemsarray = localStorage.getItem("items")
+      //  ? JSON.parse(localStorage.getItem("items"))
+      //: [];
+      // itemsarray.push(this.state);
+
+      // localStorage.setItem("items", JSON.stringify(itemsarray));
+      this.props.add(this.state);
       this.setState({ title: "", description: "", deadline: "" });
     }
   }
