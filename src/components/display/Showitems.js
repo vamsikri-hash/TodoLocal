@@ -3,6 +3,7 @@ import Showitem from "./Showitem";
 
 class Showitems extends Component {
   render() {
+    console.log(this.props);
     const Items = this.props.Items;
     return (
       <div>
@@ -11,7 +12,9 @@ class Showitems extends Component {
         </div>
         <div className="grid-style">
           {Items != null &&
-            Items.map((item, index) => <Showitem key={index} item={item} />)}
+            Items.map((item, index) => (
+              <Showitem key={index} item={item} del={this.props.delete} />
+            ))}
         </div>
       </div>
     );

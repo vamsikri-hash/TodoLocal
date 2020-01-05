@@ -6,7 +6,16 @@ class Showitem extends Component {
     this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleDelete() {}
+  handleDelete(tit) {
+    this.props.del(tit);
+    /* const itarray = JSON.parse(localStorage.getItem("items"));
+    for (let i = 0; i < itarray.length; i++) {
+      if (itarray[i].title === tit) {
+        itarray.splice(i, 1);
+      }
+    }
+    localStorage.setItem("items", JSON.stringify(itarray)); */
+  }
   render() {
     const { title, description, deadline } = this.props.item;
     console.log(title);
@@ -28,6 +37,12 @@ class Showitem extends Component {
                 {deadline}
               </Fragment>
             )}
+            <button
+              className="btn btn-danger m-2"
+              onClick={this.handleDelete.bind(this, title)}
+            >
+              Delete
+            </button>
           </li>
         </ul>
       </div>
