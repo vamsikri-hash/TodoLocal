@@ -26,6 +26,22 @@ class App extends Component {
         : []
     });
   };
+
+  delete = tit => {
+    const itarray = this.state.todo;
+    for (let i = 0; i < itarray.length; i++) {
+      if (itarray[i].title === tit) {
+        itarray.splice(i, 1);
+      }
+    }
+    this.setState({ todo: itarray });
+    localStorage.setItem("items", JSON.stringify(this.state.todo));
+    this.setState({
+      Items: localStorage.getItem("items")
+        ? JSON.parse(localStorage.getItem("items"))
+        : []
+    });
+  };
   Clear = () => {
     this.setState({ Items: [], todo: [] });
   };
