@@ -9,18 +9,11 @@ class Form extends Component {
       deadline: ""
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleDes = this.handleDes.bind(this);
-    this.handleDate = this.handleDate.bind(this);
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
-    this.setState({ title: event.target.value });
-  }
-  handleDes(event) {
-    this.setState({ description: event.target.value });
-  }
-  handleDate(event) {
-    this.setState({ deadline: event.target.value });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit(event) {
@@ -48,6 +41,7 @@ class Form extends Component {
             Title:
             <input
               type="text"
+              name="title"
               value={this.state.title}
               onChange={this.handleChange}
               placeholder="enter the title"
@@ -57,8 +51,9 @@ class Form extends Component {
             Description:
             <input
               type="text"
+              name="description"
               value={this.state.description}
-              onChange={this.handleDes}
+              onChange={this.handleChange}
               placeholder="write the description"
             />
           </label>
@@ -66,8 +61,9 @@ class Form extends Component {
             Deadline:
             <input
               type="date"
+              name="deadline"
               value={this.state.deadline}
-              onChange={this.handleDate}
+              onChange={this.handleChange}
             />
           </label>
           <input type="submit" value="Add" className=" btn btn-success" />
